@@ -102,9 +102,26 @@ public class Punto implements IPunto {
     // para presentar mediante git la proxima clase 12/08/2024
 
     @Override
-    public double dameDistanciaEntreOtroPunto(Punto OtroOPunto) {
+    public double dameDistanciaEntreOtroPunto(Punto OtroPunto) {
+        double distancia = 0;
+        double x1 = this.x;
+        double y2 = this.y;
+        double x2 = OtroPunto.getX();
+        double y2 = OtroPunto.getY();
+        System.out.println(this.toString());
+        System.out.println(OtroPunto.toString());
 
-        return 0;
+        if (this.sistema == sistema.PLANO) {
+            distancia = Math.sqrt(Math.pow((x2 - x1), b:2) + Math.pow((y2 - y1), b:2));
+
+        }
+        else if (this,sistema == sistema.ESPACIO) {
+
+        }
+        else{
+            System.out.println( x: "Debe proporcionar un sitema, no se puede relizar la operacion");
+        }
+        return distancia;
     }
 
     @Override
