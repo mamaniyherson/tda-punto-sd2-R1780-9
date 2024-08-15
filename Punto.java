@@ -103,30 +103,57 @@ public class Punto implements IPunto {
 
     @Override
     public double dameDistanciaEntreOtroPunto(Punto OtroPunto) {
-        double distancia = 0;
-        double x1 = this.x;
-        double y2 = this.y;
-        double x2 = OtroPunto.getX();
-        double y2 = OtroPunto.getY();
-        System.out.println(this.toString());
-        System.out.println(OtroPunto.toString());
 
-        if (this.sistema == sistema.PLANO) {
-            distancia = Math.sqrt(Math.pow((x2 - x1), b:2) + Math.pow((y2 - y1), b:2));
 
+            double distancia = 0;
+            double x1 = this.x;
+            double y1 = this.y;
+            double x2 = otroPunto.getX();
+            double y2 = otroPunto.getY();
+            double z1 = this.z;
+            double z2 = otroPunto.getZ();
+    
+            System.out.println(this.toString());
+            System.out.println(otroPunto.toString());
+    
+            if (this.sistema == Sistema.PLANO && otroPunto.getSistema() == Sistema.PLANO) {
+                distancia = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+            } else if (this.sistema == Sistema.ESPACIO && otroPunto.getSistema() == Sistema.ESPACIO) {
+                distancia = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2) + Math.pow((z2 - z1), 2));
+            } else {
+                System.out.println("Debe proporcionar un sistema compatible para calcular la distancia.Ejemplo: Sistema Plano y otro punto Sistema punto");
+            }
+            return distancia;
         }
-        else if (this,sistema == sistema.ESPACIO) {
+    
+        public Punto damePuntoMedioEntreOtroPunto(Punto otroPunto) {
 
+            double xmedio=0;
+            double ymedio=0;
+            double zmedio = 0; // Inicializar zmedio
+    
+            double puntox1 = this.x;
+            double puntoy1 = this.y;
+            double puntox2 = otroPunto.getX();
+            double puntoy2 = otroPunto.getY();
+            double puntoz1 = this.z;
+            double puntoz2 = otroPunto.getZ();
+    
+            System.out.println(this.toString());
+            System.out.println(otroPunto.toString());
+    
+            if (this.sistema == Sistema.PLANO && otroPunto.getSistema() == Sistema.PLANO) {
+                xmedio = (puntox1 + puntox2) / 2;
+                ymedio = (puntoy1 + puntoy2) / 2;
+                return new Punto(Sistema.PLANO, xmedio, ymedio);
+            } else if (this.sistema == Sistema.ESPACIO && otroPunto.getSistema() == Sistema.ESPACIO) {
+                xmedio = (puntox1 + puntox2) / 2;
+                ymedio = (puntoy1 + puntoy2) / 2;
+                zmedio = (puntoz1 + puntoz2) / 2;
+                return new Punto(Sistema.ESPACIO, xmedio, ymedio, zmedio);
+            } else {
+                System.out.println("Debe proporcionar un sistema compatible para calcular el punto medio.");
+                return null; // O manejarlo de otra forma según tu diseño
+            }
         }
-        else{
-            System.out.println( x: "Debe proporcionar un sitema, no se puede relizar la operacion");
-        }
-        return distancia;
     }
-
-    @Override
-    public Punto damePuntoMedioEntreOtroPunto(Punto OtroPunto) {
-
-        return null;
-    }
-}

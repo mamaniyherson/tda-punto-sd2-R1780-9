@@ -1,5 +1,6 @@
 public class TestMain {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+     {
         Punto puntoRojo = new Punto();
         puntoRojo.setSistema(Sistema.PLANO);
         puntoRojo.setEtiqueta(etiqueta:"ROJO");
@@ -14,10 +15,10 @@ public class TestMain {
 
         // codigo que debe de utilizar para probar la implementacion de sus metodos
         double distanciaEntrePuntoVerde = puntoRojo.dameDistanciaEntreOtroPunto(puntoVerde);
-        System.out.println("distancia = " + distanciaEntrePuntoVerde);
+        System.out.println("Distancia = " + distanciaEntrePuntoVerde);
 
         Punto puntoMedioEntrePuntoVerde = puntoRojo.damePuntoMedioEntreOtroPunto(puntoVerde);
-        System.out.println(puntoMedioEntrePuntoVerde.toString());
+        System.out.println("Punto Medio = " +.toString());
 
     }
 }
